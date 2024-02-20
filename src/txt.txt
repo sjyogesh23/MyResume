@@ -1,0 +1,410 @@
+import React from "react";
+import {
+  PDFViewer,
+  Document,
+  Page,
+  View,
+  Text,
+  StyleSheet,
+  Image,
+} from "@react-pdf/renderer";
+
+import profilepic from "./profilepic.png";
+import dicon from "./dicon.png";
+
+const baseFontSize = 16;
+const headerColor = "#347CE9";
+const textColor = "#616161";
+
+const styles = StyleSheet.create({
+  // Page
+  page: {
+    flexDirection: "column",
+    backgroundColor: "#ffffff",
+    color: textColor,
+    fontFamily: "Helvetica",
+    padding: 20,
+  },
+  topbatch: {
+    display: "flex",
+    flexDirection: "row",
+    gap: 10,
+  },
+  topbatch2: {
+    justifyContent: "center",
+  },
+  // Container
+  row100: {
+    flexDirection: "row",
+    marginTop: 20,
+  },
+  column70: {
+    width: "70%",
+    paddingRight: 10,
+  },
+  column30: {
+    width: "30%",
+  },
+  eachcontainer: {
+    flexDirection: "row",
+    gap: 8,
+    marginBottom: 16,
+  },
+  container: {
+    gap: 4,
+  },
+  comprow: {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-between",
+  },
+  comp: {
+    marginBottom: 10,
+    gap: 4,
+  },
+  leftcontainer: {
+    gap: 4,
+    marginBottom: 10,
+  },
+  leftcompcontainer: {
+    flexDirection: "row",
+    gap: 4,
+  },
+  // Text
+  title: {
+    fontSize: baseFontSize + 4,
+    color: headerColor,
+    fontFamily: "Helvetica",
+    marginBottom: 2,
+  },
+  header: {
+    fontSize: baseFontSize,
+    color: "#000",
+    fontFamily: "Helvetica",
+    marginBottom: 2,
+  },
+  subheader: {
+    fontSize: baseFontSize - 6,
+    flexDirection: "row",
+  },
+  description: {
+    fontSize: baseFontSize - 5.5,
+    letterSpacing: 0.4,
+    maxWidth: 350,
+    textAlign: "justifyContent",
+  },
+  compheader: {
+    fontSize: baseFontSize - 2,
+    color: "#18191A",
+  },
+  compsubheader: {
+    fontSize: baseFontSize - 4,
+    color: "#4C4E54",
+  },
+  comprowtext: {
+    fontSize: baseFontSize - 6,
+    color: "#4C4E54",
+  },
+
+  // Image
+  profilepic: {
+    height: 70,
+    width: 65,
+    borderRadius: 5,
+    objectFit: "cover",
+  },
+  icon: {
+    height: 18,
+    width: 18,
+    objectFit: "cover",
+  },
+  progressBarContainer: {
+    width: "100%",
+    height: 5,
+    backgroundColor: "#f0f0f0",
+  },
+  progressBar: {
+    height: "100%",
+    borderRadius: 100,
+    backgroundColor: headerColor,
+  },
+});
+const ProgressBar = ({ progress }) => {
+  return (
+    <View style={styles.progressBarContainer}>
+      <View style={[styles.progressBar, { width: `${progress * 100}%` }]} />
+    </View>
+  );
+};
+const App = () => {
+  return (
+    <div className="App">
+      <PDFViewer width="100%" height="800px">
+        <Document>
+          <Page size="A4" style={styles.page}>
+            <View style={styles.topbatch}>
+              <Image src={profilepic} style={styles.profilepic} />{" "}
+              <View style={styles.topbatch2}>
+                <Text style={styles.title}>Yogesh SJ</Text>
+                <Text style={styles.subheader}>Developer / Designer</Text>
+              </View>
+            </View>
+
+            <View style={styles.row100}>
+              <View style={styles.column70}>
+                <View style={styles.eachcontainer}>
+                  <Image src={dicon} style={styles.icon} />
+                  <View style={styles.container}>
+                    <Text style={styles.header}>Profile</Text>
+                    <Text style={styles.description}>
+                      I'm a creative app/web developer and designer known for
+                      crafting functional, innovative solutions. A multitasker
+                      by nature, I excel in dynamic environments and have strong
+                      team management skills.
+                    </Text>
+                  </View>
+                </View>
+                <View style={styles.eachcontainer}>
+                  <Image src={dicon} style={styles.icon} />
+                  <View style={styles.container}>
+                    <Text style={styles.header}>Education</Text>
+                    <View style={styles.comp}>
+                      <Text style={styles.compheader}>
+                        SRM Institute of Science and Technology, Ramapuram
+                      </Text>
+                      <Text style={styles.compsubheader}>
+                        B.Tech Computer Science and Engineering
+                      </Text>
+                      <View style={styles.comprow}>
+                        <Text style={styles.comprowtext}>2021 - Present</Text>
+                        <Text style={styles.comprowtext}>CGPA: 9.6</Text>
+                      </View>
+                    </View>
+                    <View style={styles.comp}>
+                      <Text style={styles.compheader}>
+                        SRM Nightingale Matriculation Higher Secondary School
+                      </Text>
+                      <Text style={styles.compsubheader}>
+                        Senior Secondary (XII)
+                      </Text>
+                      <View style={styles.comprow}>
+                        <Text style={styles.comprowtext}>2020 - 2021</Text>
+                        <Text style={styles.comprowtext}>Score: 78%</Text>
+                      </View>
+                    </View>
+                    <View style={styles.comp}>
+                      <Text style={styles.compheader}>
+                        SRM Nightingale Matriculation Higher Secondary School
+                      </Text>
+                      <Text style={styles.compsubheader}>Secondary (X)</Text>
+                      <View style={styles.comprow}>
+                        <Text style={styles.comprowtext}>2019 - 2021</Text>
+                        <Text style={styles.comprowtext}>Score: 78%</Text>
+                      </View>
+                    </View>
+                  </View>
+                </View>
+                <View style={styles.eachcontainer}>
+                  <Image src={dicon} style={styles.icon} />
+                  <View style={[styles.container, { width: 500 }]}>
+                    <Text style={styles.header}>Work Experience</Text>
+                    <View style={styles.comp}>
+                      <Text style={styles.compheader}>
+                        C++ Programmer - Internship
+                      </Text>
+                      <View style={styles.comprow}>
+                        <Text style={styles.comprowtext}>
+                          Cybernaut Edu-Tech LLP
+                        </Text>
+                        <Text style={styles.comprowtext}>
+                          Jan, 2022 - May, 2022
+                        </Text>
+                      </View>
+                      <Text style={styles.description}>
+                        Secured C++ programmer internship after excelling in
+                        workshop. Enhanced programming skills and teamwork
+                        ability.
+                      </Text>
+                    </View>
+                    <View style={styles.comp}>
+                      <Text style={styles.compheader}>
+                        Project Team Lead - Part Time
+                      </Text>
+                      <View style={styles.comprow}>
+                        <Text style={styles.comprowtext}>
+                          Cybernaut Edu-Tech LLP
+                        </Text>
+                        <Text style={styles.comprowtext}>
+                          Jan, 2022 - May, 2022
+                        </Text>
+                      </View>
+                      <Text style={styles.description}>
+                        Promoted to Project Team Lead post-internship,
+                        overseeing projects like Hospital Management System,
+                        refining leadership and team management skills.
+                      </Text>
+                    </View>
+                    <View style={styles.comp}>
+                      <Text style={styles.compheader}>
+                        Java Developer - Internship
+                      </Text>
+                      <View style={styles.comprow}>
+                        <Text style={styles.comprowtext}>
+                          Shiash Info Solutions Private Limited
+                        </Text>
+                        <Text style={styles.comprowtext}>
+                          Jan, 2022 - May, 2022
+                        </Text>
+                      </View>
+                      <Text style={styles.description}>
+                        During my Java Developer internship, I gained practical
+                        experience with Java programming and Apache NetBeans,
+                        along with exposure to Angular JS fundamentals
+                      </Text>
+                    </View>
+                    <View style={styles.comp}>
+                      <Text style={styles.compheader}>
+                        UI/UX Designer - Internship
+                      </Text>
+                      <View style={styles.comprow}>
+                        <Text style={styles.comprowtext}>
+                          Shami innovation and technologies Limited
+                        </Text>
+                        <Text style={styles.comprowtext}>
+                          Oct, 2023 - Jan, 2024
+                        </Text>
+                      </View>
+                      <Text style={styles.description}>
+                        Throughout my tenure as a UI/UX Designer, I actively
+                        contributed to projects such as EduShamiit and WebDem,
+                        playing a key role in crafting engaging user interfaces
+                        and enhancing user experiences.
+                      </Text>
+                    </View>
+                    <View style={styles.comp}>
+                      <Text style={styles.compheader}>
+                        Team Lead / Web Developer - Freelance
+                      </Text>
+                      <View style={styles.comprow}>
+                        <Text style={styles.comprowtext}>
+                          Seed foundation of PEC(NGO)
+                        </Text>
+                        <Text style={styles.comprowtext}>
+                          Oct, 2023 - Dec, 2024
+                        </Text>
+                      </View>
+                      <Text style={styles.description}>
+                        As Team Lead at Seed Foundation of PEC, I demonstrated
+                        React JS and AWS skills, led Scrum meetings, and managed
+                        projects for impactful online presence.
+                      </Text>
+                    </View>
+                  </View>
+                </View>
+              </View>
+              <View style={styles.column30}>
+                <View style={styles.leftcontainer}>
+                  <Text style={styles.header}>Details</Text>
+                  <View
+                    style={[
+                      styles.leftcompcontainer,
+                      { alignItems: "center", margin: 0 },
+                    ]}
+                  >
+                    <Image src={dicon} style={styles.icon} />
+                    <Text style={styles.compsubheader}>+91 8925263943</Text>
+                  </View>
+                  <View
+                    style={[
+                      styles.leftcompcontainer,
+                      { alignItems: "center", margin: 0 },
+                    ]}
+                  >
+                    <Image src={dicon} style={styles.icon} />
+                    <Text style={styles.compsubheader}>
+                      sjyogesh23@gmail.com
+                    </Text>
+                  </View>
+                  <View
+                    style={[
+                      styles.leftcompcontainer,
+                      { alignItems: "center", margin: 0 },
+                    ]}
+                  >
+                    <Image src={dicon} style={styles.icon} />
+                    <Text style={styles.compsubheader}>Chennai, India</Text>
+                  </View>
+                  <View
+                    style={[
+                      styles.leftcompcontainer,
+                      { alignItems: "center", margin: 0 },
+                    ]}
+                  >
+                    <Image src={dicon} style={styles.icon} />
+                    <Text style={styles.compsubheader}>23.12.2003</Text>
+                  </View>
+                </View>
+                <View style={styles.leftcontainer}>
+                  <Text style={styles.header}>Links</Text>
+                  <View
+                    style={[
+                      styles.leftcompcontainer,
+                      { alignItems: "center", margin: 0 },
+                    ]}
+                  >
+                    <Image src={dicon} style={styles.icon} />
+                    <Text style={styles.compsubheader}>Linked In</Text>
+                  </View>
+                  <View
+                    style={[
+                      styles.leftcompcontainer,
+                      { alignItems: "center", margin: 0 },
+                    ]}
+                  >
+                    <Image src={dicon} style={styles.icon} />
+                    <Text style={styles.compsubheader}>Git Hub</Text>
+                  </View>
+                  <View
+                    style={[
+                      styles.leftcompcontainer,
+                      { alignItems: "center", margin: 0 },
+                    ]}
+                  >
+                    <Image src={dicon} style={styles.icon} />
+                    <Text style={styles.compsubheader}>X</Text>
+                  </View>
+                  <View
+                    style={[
+                      styles.leftcompcontainer,
+                      { alignItems: "center", margin: 0 },
+                    ]}
+                  >
+                    <Image src={dicon} style={styles.icon} />
+                    <Text style={styles.compsubheader}>23.12.2003</Text>
+                  </View>
+                </View>
+                <View style={styles.leftcontainer}>
+                  <Text style={styles.header}>Skills</Text>
+                  <View
+                    style={[
+                      styles.leftcompcontainer,
+                      {
+                        margin: 0,
+                        flexDirection: "column",
+                      },
+                    ]}
+                  >
+                    <Text style={styles.compsubheader}>React JS</Text>
+                    <ProgressBar progress={0.7} />
+                  </View>
+                </View>
+              </View>
+            </View>
+          </Page>
+        </Document>
+      </PDFViewer>
+    </div>
+  );
+};
+
+export default App;
